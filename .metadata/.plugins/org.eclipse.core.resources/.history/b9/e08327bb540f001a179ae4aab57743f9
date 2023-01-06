@@ -1,0 +1,183 @@
+package login_signup;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+
+public class signup extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtfirstName;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					signup frame = new signup();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public signup() {
+		setBackground(Color.WHITE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 413, 500);
+		setUndecorated(true);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.LIGHT_GRAY);
+		contentPane.setForeground(Color.WHITE);
+		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 413, 22);
+		panel.setLayout(null);
+		panel.setBackground(Color.BLACK);
+		contentPane.add(panel);
+		
+		JLabel lblDaenerys = new JLabel("Daenerys'");
+		lblDaenerys.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDaenerys.setForeground(Color.WHITE);
+		lblDaenerys.setFont(new Font("Tekton Pro", Font.BOLD, 20));
+		lblDaenerys.setBounds(0, 1, 110, 21);
+		panel.add(lblDaenerys);
+		
+		BufferedImage img = null;
+		try {
+		    img = ImageIO.read(new File("C:\\Users\\Marge\\Desktop\\Finals_project\\house-misc-bsystem\\src\\login_signup\\daeneryslogo.png"));
+		} catch (IOException e) {
+		    e.printStackTrace();
+		}
+		
+		Image dimg = img.getScaledInstance(lblDaenerys.getWidth(), lblDaenerys.getHeight(),
+		        Image.SCALE_SMOOTH);
+		
+		ImageIcon imageIcon = new ImageIcon(new ImageIcon("C:\\Users\\Marge\\Desktop\\Finals_project\\house-misc-bsystem\\src\\login_signup\\daeneryslogo.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
+		lblDaenerys.setIcon(imageIcon);
+		
+		JLabel label = new JLabel("x");
+		label.setHorizontalTextPosition(SwingConstants.CENTER);
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setForeground(new Color(255, 255, 240));
+		label.setFont(new Font("Comic Sans MS", Font.PLAIN, 22));
+		label.setBounds(385, 0, 29, 19);
+		panel.add(label);
+		
+		txtfirstName = new JTextField();
+		txtfirstName.setBounds(54, 134, 297, 40);
+		contentPane.add(txtfirstName);
+		txtfirstName.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(54, 207, 297, 40);
+		contentPane.add(textField_1);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(54, 281, 297, 40);
+		contentPane.add(textField_2);
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		textField_3.setBounds(54, 353, 297, 40);
+		contentPane.add(textField_3);
+		
+		JLabel lblNewLabel = new JLabel("Name");
+		lblNewLabel.setFont(new Font("Verdana", Font.PLAIN, 14));
+		lblNewLabel.setBounds(54, 109, 297, 22);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblUsername = new JLabel("Username");
+		lblUsername.setFont(new Font("Verdana", Font.PLAIN, 14));
+		lblUsername.setBounds(54, 185, 155, 22);
+		contentPane.add(lblUsername);
+		
+		JLabel lblMobileNumber = new JLabel("Mobile Number");
+		lblMobileNumber.setFont(new Font("Verdana", Font.PLAIN, 14));
+		lblMobileNumber.setBounds(54, 258, 155, 22);
+		contentPane.add(lblMobileNumber);
+		
+		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setFont(new Font("Verdana", Font.PLAIN, 14));
+		lblPassword.setBounds(54, 332, 155, 22);
+		contentPane.add(lblPassword);
+		
+		JLabel lblfirstName = new JLabel("(First name & Family Name)");
+		lblfirstName.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblfirstName.setFont(new Font("Verdana", Font.PLAIN, 10));
+		lblfirstName.setBounds(54, 174, 297, 12);
+		contentPane.add(lblfirstName);
+		
+		JLabel lblSignup = new JLabel("Signup");
+		lblSignup.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSignup.setFont(new Font("Verdana", Font.BOLD, 28));
+		lblSignup.setBounds(80, 63, 271, 40);
+		contentPane.add(lblSignup);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setBounds(30, 63, 55, 46);
+		contentPane.add(lblNewLabel_1);
+		
+		BufferedImage img1 = null;
+		try {
+		    img1 = ImageIO.read(new File("C:\\Users\\Marge\\Desktop\\Finals_project\\house-misc-bsystem\\src\\logo\\login_temp.png"));
+		} catch (IOException e) {
+		    e.printStackTrace();
+		}
+		
+		Image dimg1 = img1.getScaledInstance(lblNewLabel_1.getWidth(), lblNewLabel_1.getHeight(),
+		        Image.SCALE_SMOOTH);
+		
+		ImageIcon imageIcon1 = new ImageIcon(new ImageIcon("C:\\Users\\Marge\\Desktop\\Finals_project\\house-misc-bsystem\\src\\logo\\login_temp.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
+		lblNewLabel_1.setIcon(imageIcon1);
+		
+		label.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.exit(0);
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				label.setForeground(Color.RED);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				label.setForeground(Color.WHITE);
+			}
+		});
+		
+	}
+}

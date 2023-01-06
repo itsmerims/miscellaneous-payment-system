@@ -1,0 +1,272 @@
+package admin;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.event.MouseMotionAdapter;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextField;
+import java.awt.Dimension;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JTabbedPane;
+
+public class Admin extends JFrame {
+
+	private JPanel contentPane;
+
+	//set movable
+		int xMouse;
+
+		int yMouse;
+		private JTable table;
+
+		private void frameMouseDragged(java.awt.event.MouseEvent evt) {
+
+		int coorx = evt.getXOnScreen();
+
+		int coory = evt.getYOnScreen();
+
+		 
+
+		this.setLocation(coorx-xMouse, coory-yMouse);
+
+		 
+
+		}
+
+		 
+
+		private void frameMousePressed(java.awt.event.MouseEvent evt) {
+
+		xMouse  = evt.getX();
+
+		yMouse = evt.getY();
+
+		}
+		//end
+	
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Admin frame = new Admin();
+					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);  
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Admin() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 820, 516);
+		contentPane = new JPanel();
+		contentPane.setBackground(new Color(255, 255, 255));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		setUndecorated(true);	
+		setLocationRelativeTo(null);
+		getContentPane().setBackground(new Color(255, 255, 255));
+		getContentPane().setLayout(null);
+		//lblNewLabel_2.setVisible(false);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(Color.BLACK);
+		panel.setBounds(0, 3, 820, 22);
+		getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblDaenerys = new JLabel("Daenerys'");
+		lblDaenerys.setBounds(0, 1, 110, 21);
+		lblDaenerys.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDaenerys.setForeground(Color.WHITE);
+		lblDaenerys.setFont(new Font("Tekton Pro", Font.BOLD, 20));
+		panel.add(lblDaenerys);
+		
+		BufferedImage img1 = null;
+		try {
+		    img1 = ImageIO.read(new File("C:\\Users\\Marge\\Desktop\\Finals_project\\house-misc-bsystem\\src\\logo\\daeneryslogo.png"));
+		} catch (IOException e) {
+		    e.printStackTrace();
+		}
+		
+		Image dimg1 = img1.getScaledInstance(lblDaenerys.getWidth(), lblDaenerys.getHeight(),
+		        Image.SCALE_SMOOTH);
+		
+		ImageIcon imageIcon1 = new ImageIcon(new ImageIcon("C:\\Users\\Marge\\Desktop\\Finals_project\\house-misc-bsystem\\src\\logo\\daeneryslogo.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
+		lblDaenerys.setIcon(imageIcon1);
+		
+		JLabel lblNewLabel = new JLabel("x");
+		lblNewLabel.setBounds(787, -2, 33, 19);
+		lblNewLabel.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		lblNewLabel.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.exit(0);
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				lblNewLabel.setForeground(Color.RED);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				lblNewLabel.setForeground(Color.WHITE);
+			}
+		});
+		lblNewLabel.setHorizontalTextPosition(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Comic Sans MS", Font.PLAIN, 22));
+		lblNewLabel.setForeground(new Color(255, 255, 240));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		panel.add(lblNewLabel);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.WHITE);
+		panel_1.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		panel_1.setBounds(0, 0, 820, 516);
+		getContentPane().add(panel_1, BorderLayout.NORTH);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setBounds(0, 0, 793, 24);
+		lblNewLabel_1.addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				frameMouseDragged(e);
+			}
+		});
+		lblNewLabel_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				frameMousePressed(e);
+			}
+		});
+		panel_1.setLayout(null);
+		panel_1.add(lblNewLabel_1);
+		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(10, 35, 800, 470);
+		panel_1.add(tabbedPane);
+		
+		JPanel panel_0 = new JPanel();
+		tabbedPane.addTab("Clients Info", null, panel_0, null);
+		panel_0.setLayout(null);
+		
+		BufferedImage img2 = null;
+		try {
+		    img2 = ImageIO.read(new File("C:\\Users\\Marge\\Desktop\\Finals_project\\house-misc-bsystem\\src\\logo\\daeneryslogo.png"));
+		} catch (IOException e) {
+		    e.printStackTrace();
+		}
+		
+		ImageIcon imageIcon2 = new ImageIcon(new ImageIcon("C:\\Users\\Marge\\Desktop\\Finals_project\\house-misc-bsystem\\src\\logo\\daeneryslogo.png").getImage().getScaledInstance(40, 40, Image.SCALE_DEFAULT));
+		
+		BufferedImage img = null;
+		try {
+		    img = ImageIO.read(new File("C:\\Users\\Marge\\Desktop\\Finals_project\\house-misc-bsystem\\src\\login_signup\\daenerys-targaryen.png"));
+		} catch (IOException e) {
+		    e.printStackTrace();
+		}
+		
+		ImageIcon imageIcon = new ImageIcon(new ImageIcon("C:\\Users\\Marge\\Desktop\\Finals_project\\house-misc-bsystem\\src\\login_signup\\daenerys-targaryen.png").getImage().getScaledInstance(80, 80, Image.SCALE_DEFAULT));
+		
+		
+		JLabel label_1 = new JLabel("Daenerys'");
+		label_1.setBounds(10, 41, 215, 65);
+		panel_0.add(label_1);
+		label_1.setHorizontalAlignment(SwingConstants.CENTER);
+		label_1.setForeground(Color.WHITE);
+		label_1.setFont(new Font("Tekton Pro", Font.BOLD, 39));
+		
+		Image dimg2 = img2.getScaledInstance(label_1.getWidth(), label_1.getHeight(),
+		        Image.SCALE_SMOOTH);
+		label_1.setIcon(imageIcon2);
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBounds(257, 87, 522, 341);
+		panel_0.add(panel_3);
+		panel_3.setBackground(new Color(255, 255, 255));
+		panel_3.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
+		panel_3.setLayout(null);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBackground(Color.WHITE);
+		scrollPane.setBounds(10, 11, 502, 319);
+		panel_3.add(scrollPane);
+		
+		table = new JTable();
+		table.setBackground(Color.WHITE);
+		table.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Account no.", "Account owner", "Username", "Mobile No.", "Password"
+			}
+		));
+		scrollPane.setViewportView(table);
+		
+		JLabel lblBayadCenter = new JLabel("Bayad Center");
+		lblBayadCenter.setBounds(20, 85, 205, 59);
+		panel_0.add(lblBayadCenter);
+		lblBayadCenter.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBayadCenter.setForeground(Color.WHITE);
+		lblBayadCenter.setFont(new Font("Comfortaa", Font.PLAIN, 31));
+		
+		
+		
+		JLabel lblNewLabel_4 = new JLabel("DAENERYS'");
+		lblNewLabel_4.setBounds(362, 61, 364, 30);
+		panel_0.add(lblNewLabel_4);
+		lblNewLabel_4.setFont(new Font("Tekton Pro", Font.PLAIN, 27));
+		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JLabel lblNewLabel_5 = new JLabel("");
+		lblNewLabel_5.setBounds(362, 11, 166, 80);
+		panel_0.add(lblNewLabel_5);
+		lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
+		Image dimg = img.getScaledInstance(lblNewLabel_5.getWidth(), lblNewLabel_5.getHeight(),
+		        Image.SCALE_SMOOTH);
+		lblNewLabel_5.setIcon(imageIcon);
+		
+		JPanel panel_2 = new JPanel();
+		panel_2.setBounds(0, 0, 239, 442);
+		panel_2.setBackground(new Color(255, 153, 102));
+		panel_2.setLayout(null);
+		panel_0.add(panel_2);
+		
+		
+		JPanel panel_4 = new JPanel();
+		tabbedPane.addTab("New tab", null, panel_4, null);
+		
+		
+		
+	}
+}

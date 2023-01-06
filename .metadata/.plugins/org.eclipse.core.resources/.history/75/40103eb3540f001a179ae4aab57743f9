@@ -1,0 +1,116 @@
+package login_signup;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
+import javax.swing.JLabel;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+
+public class signup extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField textField;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					signup frame = new signup();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public signup() {
+		setBackground(Color.WHITE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 413, 500);
+		setUndecorated(true);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.LIGHT_GRAY);
+		contentPane.setForeground(Color.WHITE);
+		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 413, 22);
+		panel.setLayout(null);
+		panel.setBackground(Color.BLACK);
+		contentPane.add(panel);
+		
+		JLabel lblDaenerys = new JLabel("Daenerys'");
+		lblDaenerys.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDaenerys.setForeground(Color.WHITE);
+		lblDaenerys.setFont(new Font("Tekton Pro", Font.BOLD, 20));
+		lblDaenerys.setBounds(0, 1, 110, 21);
+		panel.add(lblDaenerys);
+		
+		BufferedImage img = null;
+		try {
+		    img = ImageIO.read(new File("C:\\Users\\Marge\\Desktop\\Finals_project\\house-misc-bsystem\\src\\login_signup\\daeneryslogo.png"));
+		} catch (IOException e) {
+		    e.printStackTrace();
+		}
+		
+		Image dimg = img.getScaledInstance(lblDaenerys.getWidth(), lblDaenerys.getHeight(),
+		        Image.SCALE_SMOOTH);
+		
+		ImageIcon imageIcon = new ImageIcon(new ImageIcon("C:\\Users\\Marge\\Desktop\\Finals_project\\house-misc-bsystem\\src\\login_signup\\daeneryslogo.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
+		lblDaenerys.setIcon(imageIcon);
+		
+		JLabel label = new JLabel("x");
+		label.setHorizontalTextPosition(SwingConstants.CENTER);
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setForeground(new Color(255, 255, 240));
+		label.setFont(new Font("Comic Sans MS", Font.PLAIN, 22));
+		label.setBounds(385, 0, 29, 19);
+		panel.add(label);
+		
+		textField = new JTextField();
+		textField.setBounds(54, 89, 290, 40);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		label.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.exit(0);
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				label.setForeground(Color.RED);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				label.setForeground(Color.WHITE);
+			}
+		});
+		
+	}
+}

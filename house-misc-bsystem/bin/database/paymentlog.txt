@@ -1,0 +1,5 @@
+69360,florence,Prepaid/Postpaid,SMART,1799,13:50:31,12-11-2019,1801 pesos,
+69360,flo,Electricity,Meralco,1800,13:53:49,12-11-2019,1820 pesos,
+19027,tony,Cable system,Asian Vision(CATV Cable System),600,14:49:53,12-11-2019,610 pesos,
+95396,jn,Internet,Converge ICT Solutions,900,17:06:20,12-11-2019,920 pesos,
+86715,john rimuel,Water,Maynilad,123,17:36:10,12-11-2019,143 pesos,

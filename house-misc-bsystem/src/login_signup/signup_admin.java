@@ -1,0 +1,446 @@
+package login_signup;
+
+import java.awt.EventQueue;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
+import javax.swing.text.MaskFormatter;
+
+import admin.Admin;
+import methods.mgamethod;
+
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
+import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.Random;
+
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Cursor;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
+public class signup_admin extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtfirstName;
+	private JTextField textField_1;
+	private JFormattedTextField textField_2;
+	String name;
+	String username;
+	String mobile;
+	Random rand = new Random();
+	int num = rand.nextInt(99);
+	String account = Integer.toString(num);
+	
+
+	/**
+	 * Launch the application.
+	 */
+	
+	//set movable
+			int xMouse;
+
+			int yMouse;
+
+			private void frameMouseDragged(java.awt.event.MouseEvent evt) {
+
+			int coorx = evt.getXOnScreen();
+
+			int coory = evt.getYOnScreen();
+
+			 
+
+			this.setLocation(coorx-xMouse, coory-yMouse);
+
+			 
+
+			}
+
+			 
+
+			private void frameMousePressed(java.awt.event.MouseEvent evt) {
+
+			xMouse  = evt.getX();
+
+			yMouse = evt.getY();
+
+			}
+			//end
+			
+			 static MaskFormatter createFormatter(String format) {
+			        MaskFormatter formatter = null;
+			        try {
+			            formatter = new MaskFormatter(format);
+			            formatter.setPlaceholderCharacter('.');
+			        } catch (java.text.ParseException exc) {
+			            System.err.println("formatter is bad: " + exc.getMessage());
+			            System.exit(-1);
+			        }
+			        return formatter;
+			    }
+	
+
+			public void run() {
+				try {
+					signup frame = new signup();
+					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+
+	/**
+	 * Create the frame.
+	 */
+	public signup_admin() {
+		setBackground(Color.WHITE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 413, 477);
+		setUndecorated(true);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.LIGHT_GRAY);
+		contentPane.setForeground(Color.WHITE);
+		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 3));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 413, 22);
+		panel.setBackground(Color.BLACK);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblDaenerys = new JLabel("Daenerys'");
+		lblDaenerys.setBounds(148, 3, 110, 16);
+		lblDaenerys.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDaenerys.setForeground(Color.WHITE);
+		lblDaenerys.setFont(new Font("SansSerif", Font.BOLD | Font.ITALIC, 15));
+		panel.add(lblDaenerys);
+		
+		
+		
+		ImageIcon imageIcon = new ImageIcon(new ImageIcon("./src/logo/black.jpg").getImage().getScaledInstance(22, 23, Image.SCALE_DEFAULT));
+		
+		
+		JLabel label = new JLabel("x");
+		label.setBounds(385, 0, 29, 19);
+		label.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		label.setHorizontalTextPosition(SwingConstants.CENTER);
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setForeground(new Color(255, 255, 240));
+		label.setFont(new Font("Comic Sans MS", Font.PLAIN, 22));
+		panel.add(label);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.addMouseMotionListener(new MouseMotionAdapter() {
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				frameMouseDragged(e);
+			}
+		});
+		lblNewLabel_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				frameMousePressed(e);
+			}
+		});
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_3.setBounds(0, 0, 29, 19);
+		panel.add(lblNewLabel_3);
+		lblNewLabel_2.setBounds(0, 0, 384, 22);
+		panel.add(lblNewLabel_2);
+		lblNewLabel_3.setIcon(imageIcon);
+		
+		txtfirstName = new JTextField();
+		txtfirstName.setFont(new Font("Verdana", Font.PLAIN, 14));
+		txtfirstName.setBounds(55, 104, 297, 40);
+		contentPane.add(txtfirstName);
+		txtfirstName.setColumns(10);
+		
+		JLabel lblOr = new JLabel("");
+		lblOr.setForeground(Color.RED);
+		lblOr.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblOr.setFont(new Font("Verdana", Font.BOLD, 12));
+		lblOr.setBounds(55, 312, 297, 12);
+		contentPane.add(lblOr);
+		
+		textField_1 = new JTextField();
+		textField_1.setFont(new Font("Verdana", Font.PLAIN, 14));
+		textField_1.setColumns(10);
+		textField_1.setBounds(55, 188, 297, 40);
+		contentPane.add(textField_1);
+		
+		textField_2 = new JFormattedTextField(createFormatter("(639) ###-###-###"));
+		textField_2.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				try {
+					int mobile = Integer.parseInt(textField_2.getText());
+					
+				}
+				catch(Exception ex) {
+					
+				}
+			
+				
+				
+			}
+		});
+		textField_2.setFont(new Font("Verdana", Font.PLAIN, 14));
+		textField_2.setColumns(10);
+		textField_2.setBounds(55, 272, 297, 40);
+		contentPane.add(textField_2);
+		
+		JLabel lblNewLabel = new JLabel("Name");
+		lblNewLabel.setFont(new Font("Verdana", Font.PLAIN, 14));
+		lblNewLabel.setBounds(55, 79, 297, 22);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblUsername = new JLabel("Username");
+		lblUsername.setFont(new Font("Verdana", Font.PLAIN, 14));
+		lblUsername.setBounds(55, 166, 155, 22);
+		contentPane.add(lblUsername);
+		
+		JLabel lblMobileNumber = new JLabel("Mobile Number");
+		lblMobileNumber.setFont(new Font("Verdana", Font.PLAIN, 14));
+		lblMobileNumber.setBounds(55, 249, 155, 22);
+		contentPane.add(lblMobileNumber);
+		
+		JLabel lblfirstName = new JLabel("first name, last name, e.g.  Juan dela Cruz");
+		lblfirstName.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblfirstName.setFont(new Font("Verdana", Font.PLAIN, 10));
+		lblfirstName.setBounds(55, 144, 297, 12);
+		contentPane.add(lblfirstName);
+		
+		JLabel lblSignup = new JLabel("Signup for Another Admin");
+		lblSignup.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSignup.setFont(new Font("Verdana", Font.BOLD, 17));
+		lblSignup.setBounds(96, 33, 248, 40);
+		contentPane.add(lblSignup);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setBounds(59, 35, 42, 33);
+		contentPane.add(lblNewLabel_1);
+		
+		ImageIcon imageIcon1 = new ImageIcon(new ImageIcon("./src/logo/login_temp.png").getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT));
+		lblNewLabel_1.setIcon(imageIcon1);
+		
+		JLabel lblLettersNumbersAnd = new JLabel("e.g. juan_01, juan01");
+		lblLettersNumbersAnd.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblLettersNumbersAnd.setFont(new Font("Verdana", Font.PLAIN, 10));
+		lblLettersNumbersAnd.setBounds(55, 226, 297, 12);
+		contentPane.add(lblLettersNumbersAnd);
+		
+		
+		
+		JLabel textArea = new JLabel();
+		textArea.setHorizontalAlignment(SwingConstants.CENTER);
+		textArea.setText("\u00A9 2019 Daenerys'. All rights reserved.");
+		textArea.setForeground(Color.WHITE);
+		textArea.setFont(new Font("Verdana", Font.PLAIN, 13));
+		textArea.setBackground(Color.LIGHT_GRAY);
+		textArea.setBounds(56, 441, 296, 25);
+		contentPane.add(textArea);
+		
+		JButton btnNewButton = new JButton("Sign up");
+		btnNewButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				try {
+					name = txtfirstName.getText();
+					username = textField_1.getText();
+					mobile = textField_2.getText();
+					
+					
+					if(name.equals("") || username.equals("") || mobile.equals("")) {
+						JOptionPane.showMessageDialog(null, "Fill up all forms", "Signup Error", JOptionPane.ERROR_MESSAGE);
+					}
+					else {
+					
+					String loc = "./src/database/adminsign.txt";
+					login_admin log = new login_admin();
+					FileReader fr = new FileReader(loc);
+		            BufferedReader br = new BufferedReader(fr);
+					String line;
+					boolean isLoginSuccess = false;
+					
+					
+						while((line = br.readLine()) != null)  {
+							String[] split = line.split("\\,");
+			    		    		    		    
+			    		    if(name.equals(split[1]) || username.equals(split[2])) {
+			    		    	JOptionPane.showMessageDialog(null, "Name or Username already exists", "Warning", JOptionPane.WARNING_MESSAGE);
+			    		    	isLoginSuccess = true;
+			    		    }
+			    		    			    		    
+			            }
+						
+						
+						if(!isLoginSuccess) {
+								File file = new File("./src/database/adminsign.txt");
+					           //if the file not exist create one
+					           if(!file.exists()){
+					              file.createNewFile();
+					           }
+//					           
+					           FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
+					           BufferedWriter bw = new BufferedWriter(fw);
+							
+							bw.write(account+",");
+							bw.write(name+",");
+							bw.write(username+",");
+							bw.write(mobile);
+							bw.newLine();
+							bw.close();
+							savePassword();
+							saveAcc();
+							
+		    		    	log.setVisible(true);
+							log.setLocationRelativeTo(null);
+							JOptionPane.showMessageDialog(null, "This is your account number "+account, "Account number", JOptionPane.INFORMATION_MESSAGE);
+							dispose();
+						}
+						br.close();
+						}
+							
+							
+							
+											
+							
+							
+					}
+					catch (Exception ex) {
+						JOptionPane.showMessageDialog(null, "Fill up all forms", "Signup Error", JOptionPane.ERROR_MESSAGE);
+					}
+			}
+		});
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent ex) {
+				btnNewButton.setForeground(Color.WHITE);
+				btnNewButton.setBackground(new Color(0, 153, 255));
+				btnNewButton.setBorder(new LineBorder(Color.WHITE, 2, true));
+			}
+			@Override
+			public void mouseExited(MouseEvent ex) {
+				btnNewButton.setForeground(Color.BLACK);
+				btnNewButton.setBackground(Color.WHITE);
+				btnNewButton.setBorder(new LineBorder(new Color(0, 153, 255), 2, true));
+			}
+		});
+		btnNewButton.setBorder(new LineBorder(new Color(0, 153, 255), 2, true));
+		btnNewButton.setBackground(Color.WHITE);
+		btnNewButton.setFont(new Font("Verdana", Font.BOLD, 16));
+		btnNewButton.setBounds(55, 335, 294, 40);
+		contentPane.add(btnNewButton);
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				login_admin log = new login_admin();
+				log.setVisible(true);
+				log.setLocationRelativeTo(null);
+			}
+		});
+		btnBack.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		btnBack.setFont(new Font("Verdana", Font.BOLD, 16));
+		btnBack.setBorder(new LineBorder(new Color(0, 153, 255), 2, true));
+		btnBack.setBackground(Color.WHITE);
+		btnBack.setBounds(55, 386, 294, 40);
+		contentPane.add(btnBack);
+		
+		label.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.exit(0);
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				label.setForeground(Color.RED);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				label.setForeground(Color.WHITE);
+			}
+		});
+		
+		
+		
+	}
+	
+	
+	public void savePassword() {
+		try {
+			//"./src/database/userpass.txt"
+			File file = new File("./src/database/adminusers.txt");
+	           //if the file not exist create one
+	           if(!file.exists()){
+	              file.createNewFile();
+	           }
+//	           
+	        FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
+	        BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(username+",");
+			bw.newLine();
+			bw.close();
+	           
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+	
+	public void saveAcc() {
+		try {
+			//"./src/database/userpass.txt"
+			File file = new File("./src/database/accuseradmin.txt");
+	          
+			//if the file not exist create one
+	           if(!file.exists()){
+	              file.createNewFile();
+	           }
+	           
+	        FileWriter fw = new FileWriter(file.getAbsoluteFile(), true);
+	        BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(username+":");
+			bw.write(account);
+			bw.newLine();
+			bw.close();   
+		}
+		catch(Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+	
+}

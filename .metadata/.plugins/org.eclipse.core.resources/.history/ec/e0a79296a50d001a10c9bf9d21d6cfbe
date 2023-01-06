@@ -1,0 +1,187 @@
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import java.awt.Color;
+import javax.swing.UIManager;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import javax.swing.JTextField;
+import java.awt.Font;
+import java.awt.Frame;
+
+import javax.swing.JButton;
+import javax.swing.border.BevelBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Button;
+import java.awt.Cursor;
+import javax.swing.SwingConstants;
+import javax.swing.border.EtchedBorder;
+import javax.swing.JComboBox;
+import javax.swing.JTextArea;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.border.LineBorder;
+
+public class login extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField txtUsername;
+	private JTextField txtPassword;
+	private JTextField txtLogIn;
+	private JTextField txtX;
+	private JTextField textField;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					login frame = new login();
+					frame.setUndecorated(true);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public login() {
+		setBackground(Color.WHITE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 415, 530);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.WHITE);
+		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBorder(null);
+		panel.setBackground(Color.LIGHT_GRAY);
+		panel.setBounds(10, 150, 389, 309);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		txtUsername = new JTextField();
+		txtUsername.setForeground(UIManager.getColor("Button.shadow"));
+		txtUsername.setText("Username");
+		txtUsername.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtUsername.setBounds(71, 120, 301, 40);
+		panel.add(txtUsername);
+		txtUsername.setColumns(10);
+		
+		txtPassword = new JTextField();
+		txtPassword.setForeground(UIManager.getColor("Button.shadow"));
+		txtPassword.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		txtPassword.setText("Password");
+		txtPassword.setBounds(71, 171, 301, 40);
+		panel.add(txtPassword);
+		txtPassword.setColumns(10);
+		
+		txtLogIn = new JTextField();
+		txtLogIn.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		txtLogIn.setBackground(new Color(100, 149, 237));
+		txtLogIn.setForeground(new Color(255, 255, 255));
+		txtLogIn.setFont(new Font("Tahoma", Font.BOLD, 17));
+		txtLogIn.setHorizontalAlignment(SwingConstants.CENTER);
+		txtLogIn.setText("Log in");
+		txtLogIn.setEditable(false);
+		txtLogIn.setBounds(71, 222, 301, 40);
+		panel.add(txtLogIn);
+		txtLogIn.setColumns(10);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		comboBox.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Type of account:", "Administrator", "Client"}));
+		comboBox.setBounds(71, 69, 301, 40);
+		panel.add(comboBox);
+		
+		JTextArea txtrDontHaveAn = new JTextArea();
+		txtrDontHaveAn.setText("Don't have an account? Click here.");
+		txtrDontHaveAn.setBackground(Color.LIGHT_GRAY);
+		txtrDontHaveAn.setFont(new Font("Monospaced", Font.PLAIN, 13));
+		txtrDontHaveAn.setBounds(71, 273, 301, 25);
+		panel.add(txtrDontHaveAn);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.LIGHT_GRAY);
+		panel_1.setBounds(-12, 0, 438, 23);
+		contentPane.add(panel_1);
+		
+		txtX = new JTextField();
+		txtX.setBounds(399, -1, 29, 24);
+		txtX.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		txtX.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				System.exit(0);
+			}
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				txtX.setBorder(new LineBorder(new Color(128, 128, 128), 2));
+			}
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+				txtX.setBorder(new LineBorder(new Color(192, 192, 192), 2));
+			}
+		});
+		panel_1.setLayout(null);
+		
+		txtX.setForeground(new Color(0, 0, 0));
+		txtX.setFont(new Font("Arial", Font.BOLD, 17));
+		txtX.setHorizontalAlignment(SwingConstants.CENTER);
+		txtX.setText("X");
+		txtX.setEditable(false);
+		txtX.setBackground(Color.LIGHT_GRAY);
+		panel_1.add(txtX);
+		txtX.setColumns(10);
+		
+		textField = new JTextField();
+		textField.setBounds(376, -1, 24, 24);
+		textField.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		textField.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				setState(Frame.ICONIFIED);
+			}
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+				textField.setBorder(new LineBorder(new Color(192, 192, 192), 2));
+			}
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				textField.setBorder(new LineBorder(new Color(128, 128, 128), 2));
+			}
+		});
+		textField.setText("-");
+		textField.setHorizontalAlignment(SwingConstants.CENTER);
+		textField.setForeground(Color.BLACK);
+		textField.setFont(new Font("Arial", Font.PLAIN, 27));
+		textField.setEditable(false);
+		textField.setColumns(10);
+		textField.setBorder(null);
+		textField.setBackground(Color.LIGHT_GRAY);
+		panel_1.add(textField);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Marge\\Desktop\\logo\\daenerys.png"));
+		lblNewLabel.setBounds(10, 33, 141, 106);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblCopyright = new JLabel("Copyright 2019");
+		lblCopyright.setBounds(320, 470, 95, 14);
+		contentPane.add(lblCopyright);
+	}
+}
